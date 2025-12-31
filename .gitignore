@@ -1,5 +1,6 @@
 __pycache__
 local-server/__pycache__
+local-server/*.log
 venv/
 .vscode/
 .DS_Store
