@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 # Auto-start script for YouTube Downloader Local Server
 # This script can be added to your system startup
 

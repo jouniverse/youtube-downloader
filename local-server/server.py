@@ -22,34 +22,31 @@ CORS(app)
 HOST = "127.0.0.1"
 PORT = 8765
 
-
 # -----------------------------------------------------------------------------
 # Helpers
 # -----------------------------------------------------------------------------
 
 
-def find_ytdlp():
-    """Return yt-dlp executable or raise."""
-    path = shutil.which("yt-dlp")
-    if path:
-        return path
-    raise RuntimeError("yt-dlp not found in PATH")
+def has_ytdlp():
+    """Check if yt-dlp Python module is available."""
+    try:
+        subprocess.check_output(
+            [sys.executable, "-m", "yt_dlp", "--version"],
+            stderr=subprocess.DEVNULL,
+        )
+        return True
+    except Exception:
+        return False
 
 
 def check_ffmpeg():
-    """
-    Checks if ffmpeg is installed in the system's PATH.
-    Raises:
-        RuntimeError: ffmpeg not found in PATH
-    """
+    """Check if ffmpeg is available in PATH."""
     if not shutil.which("ffmpeg"):
         raise RuntimeError("ffmpeg not found in PATH")
 
 
 def build_format_selector(quality, format_type):
-    """
-    Maps UI options to correct yt-dlp format selectors.
-    """
+    """Maps UI options to correct yt-dlp format selectors."""
 
     height_map = {
         "1080": "1080",
@@ -86,18 +83,6 @@ def build_format_selector(quality, format_type):
 
 @app.route("/api/download", methods=["GET", "OPTIONS"])
 def download():
-    """
-    Download a YouTube video via yt-dlp.
-
-    Parameters:
-    - videoId (string, required): YouTube video ID
-    - quality (string, optional): Video quality (best, 1080, 720, 480, 360)
-    - format (string, optional): Video format (mp4, webm, audio)
-
-    Returns:
-    - HTTP response with the downloaded file (200 OK)
-    - JSON response with error message (400 Bad Request, 500 Internal Server Error)
-    """
     if request.method == "OPTIONS":
         return "", 200
 
@@ -109,7 +94,9 @@ def download():
         if not video_id:
             return jsonify(success=False, error="videoId is required"), 400
 
-        ytdlp = find_ytdlp()
+        if not has_ytdlp():
+            raise RuntimeError("yt-dlp Python module not available")
+
         check_ffmpeg()
 
         fmt = build_format_selector(quality, format_type)
@@ -119,7 +106,9 @@ def download():
         outtmpl = os.path.join(tmpdir, "%(title)s.%(ext)s")
 
         cmd = [
-            ytdlp,
+            sys.executable,
+            "-m",
+            "yt_dlp",
             "--no-playlist",
             "-f",
             fmt,
@@ -127,7 +116,6 @@ def download():
             outtmpl,
         ]
 
-        # Post-processing
         if format_type == "audio":
             cmd += [
                 "--extract-audio",
@@ -143,7 +131,6 @@ def download():
 
         subprocess.run(cmd, check=True)
 
-        # Find downloaded file
         files = os.listdir(tmpdir)
         if not files:
             raise RuntimeError("Download failed: no output file")
@@ -164,19 +151,9 @@ def download():
 
 @app.route("/health", methods=["GET"])
 def health():
-    """
-    Health check endpoint - shows if yt-dlp, ffmpeg and Python are available.
-
-    Returns:
-        dict: A JSON object containing the health status of the server.
-            - status (str): Always "ok".
-            - ytdlp (bool): True if yt-dlp is available, False otherwise.
-            - ffmpeg (bool): True if ffmpeg is available, False otherwise.
-            - python (str): The version of Python running on the server.
-    """
     return jsonify(
         status="ok",
-        ytdlp=bool(shutil.which("yt-dlp")),
+        ytdlp=has_ytdlp(),
         ffmpeg=bool(shutil.which("ffmpeg")),
         python=sys.version,
     )

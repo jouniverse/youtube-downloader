@@ -134,6 +134,14 @@ The server only listens on `127.0.0.1` (localhost) for security. It will not acc
 nohup python server.py > server.log 2>&1 &
 ```
 
+In macOS it is also possible to create Shortcuts apps to start and stop the local server in background and pin the Shortcuts apps into the menu bar.
+
+![Start YouTube Downloader Server](../images/screenshots/start-local-server-shortcuts.png)
+
+![Stop YouTube Downloader Server](../images/screenshots/stop-local-server-shortcuts.png)
+
+In `Start YouTube Downloader Server` Shortcuts app you should replace PATH_TO_PYTHON with the path to your Python 3 executable (something like `$HOME/.pyenv/versions/3.12.0/bin/python`) and PATH_TO_LOCAL_SERVER with the path to the server.py file (in `/local-server` folder).
+
 ### Windows:
 
 Use a terminal that supports background processes, or create a batch file.
