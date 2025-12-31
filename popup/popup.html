@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouTube Downloader</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="popup-container">
+      <div class="popup-header">
+        <img
+          src="../images/yt-downloader-logo-w.png"
+          alt="Logo"
+          class="popup-logo"
+        />
+        <h1>YouTube Downloader</h1>
+      </div>
+
+      <div class="popup-content">
+        <div class="info-section">
+          <p>
+            Click the download button on any YouTube video page to download it.
+          </p>
+        </div>
+
+        <div class="settings-section">
+          <h2>Settings</h2>
+
+          <div class="setting-item">
+            <label for="quality-select">Default Quality:</label>
+            <select id="quality-select">
+              <option value="best">Best Available</option>
+              <option value="1080">1080p</option>
+              <option value="720">720p</option>
+              <option value="480">480p</option>
+              <option value="360">360p</option>
+            </select>
+          </div>
+
+          <div class="setting-item">
+            <label for="format-select">Default Format:</label>
+            <select id="format-select">
+              <option value="mp4">MP4 (Video)</option>
+              <option value="webm">WebM (Video)</option>
+              <option value="audio">Audio Only (MP3)</option>
+            </select>
+          </div>
+
+          <div class="setting-item">
+            <label for="backend-url">Backend API URL:</label>
+            <input
+              type="text"
+              id="backend-url"
+              placeholder="http://127.0.0.1:8765/api/download"
+            />
+            <small
+              style="
+                display: block;
+                margin-top: 4px;
+                color: #666;
+                font-size: 12px;
+              "
+            >
+              Default: http://127.0.0.1:8765/api/download (local server).
+            </small>
+            <div
+              style="margin-top: 8px; display: flex; gap: 8px; flex-wrap: wrap"
+            >
+              <button id="test-connection" class="test-button">
+                Test Connection
+              </button>
+              <button id="check-server-status" class="test-button">
+                Check Server Status
+              </button>
+            </div>
+            <div
+              id="server-status"
+              style="
+                margin-top: 8px;
+                padding: 8px;
+                border-radius: 4px;
+                display: none;
+              "
+            >
+              <strong>Server Status:</strong>
+              <span id="server-status-text">Checking...</span>
+            </div>
+          </div>
+
+          <button id="save-settings" class="save-button">Save Settings</button>
+        </div>
+
+        <div class="status-section" id="status-section" style="display: none">
+          <p id="status-message"></p>
+        </div>
+      </div>
+    </div>
+
+    <script src="popup.js"></script>
+  </body>
+</html>

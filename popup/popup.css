@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Google+Sans:ital,opsz,wght,GRAD@0,17..18,400..700,-50..200;1,17..18,400..700,-50..200&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 320px;
+  font-family: "Google Sans", sans-serif;
+  background-color: #f9f9f9;
+}
+
+.popup-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.popup-header {
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  color: white;
+  padding: 20px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.popup-logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.popup-header h1 {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.popup-content {
+  padding: 20px;
+}
+
+.info-section {
+  margin-bottom: 20px;
+  padding: 12px;
+  background-color: #e3f2fd;
+  border-radius: 4px;
+  border-left: 4px solid #2196f3;
+}
+
+.info-section p {
+  font-size: 14px;
+  color: #1976d2;
+  line-height: 1.5;
+}
+
+.settings-section {
+  margin-bottom: 20px;
+}
+
+.settings-section h2 {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.setting-item {
+  margin-bottom: 16px;
+}
+
+.setting-item label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #555;
+}
+
+.setting-item select {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  background-color: white;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.setting-item select:hover {
+  border-color: #999;
+}
+
+.setting-item select:focus {
+  outline: none;
+  border-color: #ff0000;
+  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.1);
+}
+
+#backend-url {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #696969;
+}
+
+#backend-url:focus {
+  outline: none;
+  border-color: #ff0000;
+  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.1);
+}
+
+#backend-url:hover {
+  border-color: #999;
+}
+
+#backend-url:active {
+  border-color: #999;
+}
+
+.test-button {
+  width: 100%;
+  padding: 8px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.test-button:hover {
+  background-color: #cc0000;
+}
+
+.test-button:active {
+  background-color: #990000;
+}
+
+.save-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.save-button:hover {
+  background-color: #cc0000;
+}
+
+.save-button:active {
+  background-color: #990000;
+}
+
+.status-section {
+  padding: 12px;
+  border-radius: 4px;
+  margin-top: 12px;
+}
+
+.status-section.success {
+  background-color: #e8f5e9;
+  border-left: 4px solid #4caf50;
+}
+
+.status-section.error {
+  background-color: #ffebee;
+  border-left: 4px solid #f44336;
+}
+
+#status-message {
+  font-size: 14px;
+  color: #333;
+}
+
+.status-section.success #status-message {
+  color: #2e7d32;
+}
+
+.status-section.error #status-message {
+  color: #c62828;
+}

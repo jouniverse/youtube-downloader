@@ -1,0 +1,12 @@
+__pycache__
+local-server/__pycache__
+venv/
+.vscode/
+.DS_Store
+images/*.ai
+*.zip
+notes/
+
+
+
+
