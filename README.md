@@ -156,15 +156,15 @@ youtube-downloader/
 
 ## Terms of Service (YouTube)
 
-This project is a demo project. Please respect YouTube's Terms of Service and only download videos you have permission to download.
+This project is a demo project. Please respect YouTube's Terms of Service and only download videos you have permission to download, no matter how low-quality or temporary the downloaded content may be.
 
 You can only download:
 
 - Your own content
 - Content with permission
-- Content licensed for download (like educational videos under Creative Commons)
+- Content licensed for download (like educational videos under Creative Commons or so-called "Fair Use" content, where applicable by law)
 
-One legitimate use case is downloading your own videos to verify encoding changes by YouTube (resolution, audio quality, AI enhancements, etc.).
+One legitimate use case is downloading your own videos to verify encoding or metadata changes made by YouTube with or without your informed consent (resolution, audio quality, AI enhancements, unwanted metadata, watermarks etc.).
 
 ## Troubleshooting
 
