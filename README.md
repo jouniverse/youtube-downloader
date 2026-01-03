@@ -26,7 +26,6 @@ This project is intended as a **demo project**. Please respect YouTube's Terms o
 
    - Click the extension icon
    - The backend URL is auto-filled to `http://127.0.0.1:8765/api/download`
-   - Server status is automatically checked - you'll see if it's running
    - Click "Check Server Status" to refresh, or "Test Connection" for details
    - Click "Save Settings" when done
 
