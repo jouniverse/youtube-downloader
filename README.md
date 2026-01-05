@@ -155,7 +155,7 @@ youtube-downloader/
 
 ## Terms of Service (YouTube)
 
-This project is a demo project. Please respect YouTube's Terms of Service and only download videos you have permission to download, no matter how low-quality or temporary the downloaded content may be.
+This project is a demo project. Please respect YouTube's Terms of Service and only download videos you have permission to download, no matter how low-quality, irrelevant or temporary the downloadable content may be.
 
 You can only download:
 
